@@ -1,1 +1,13 @@
+node server.js
+#!/bin/bash
 
+# Navigate to the directory where your server.js file is located
+cd /path/to/your/project
+
+# Install dependencies (only if not already installed)
+# npm install
+
+# Run the Node.js server
+node server.js
+chmod +x run_server.sh
+./run_server.sh
