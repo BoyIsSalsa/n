@@ -48,3 +48,51 @@ window.onload = function () {
         });
     }
 };
+const express = require('express');
+const mongoose = require('mongoose');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+mongoose.connect('YOUR_MONGODB_ATLAS_CONNECTION_STRING', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const voteSchema = new mongoose.Schema({
+  user: String,
+  game: String,
+});
+
+const Vote = mongoose.model('Vote', voteSchema);
+
+app.use(express.json());
+
+let totalVotes = 0; // Variable to store total votes in memory
+
+// Load total votes from the database on server startup
+(async () => {
+  try {
+    totalVotes = await Vote.countDocuments();
+    console.log('Total votes loaded:', totalVotes);
+  } catch (error) {
+    console.error('Error loading total votes:', error);
+  }
+})();
+
+app.post('/vote', async (req, res) => {
+  const { user, game } = req.body;
+  try {
+    const newVote = new Vote({ user, game });
+    await newVote.save();
+    totalVotes++; // Increment total votes in memory
+    res.status(201).json({ message: 'Vote recorded successfully!' });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/total-votes', (req, res) => {
+  res.json({ totalVotes });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
