@@ -1,22 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-}
-
-.voting-container {
-    max-width: 600px;
-    margin: 50px auto;
-    text-align: center;
-}
-
-.options button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #282c34;
+    background-color: #000; /* Set the background color to black (#000) */
     color: #61dafb;
 }
 
@@ -52,17 +36,3 @@ h2 {
 #result {
     font-size: 18px;
 }
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #000; /* Change this to black (#000) */
-    color: #61dafb;
-}
-
-/* ... (rest of the styles remain the same) */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #000; /* Change this to black (#000) */
-    color: #61dafb;
-}
-
-/* ... (rest of the styles remain the same) */
