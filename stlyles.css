@@ -35,3 +35,7 @@ body {
     background-color: black;
     color: #61dafb;
 }
+/* Add this style to remove the outline on focused elements */
+*:focus {
+  outline: none;
+}
